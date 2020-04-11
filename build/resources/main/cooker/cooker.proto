@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package cooker;
+
+option java_package = "com.proto.cooker";
+option java_multiple_files = true;
+
+//
+message Cooker {
+    int32 temperature = 1;
+    double cookTime = 2;
+    double weight = 3;
+}
+
+message CookerRequest {
+    Cooker cooker =1;
+}
+
+message CookerResponse {
+    string result = 1;
+}
+
+service CookerService {
+
+    //Unary
+    rpc Cooker(CookerRequest) returns (CookerResponse) {};
+
+}
