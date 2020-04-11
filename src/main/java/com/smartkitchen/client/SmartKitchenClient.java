@@ -1,15 +1,12 @@
 package com.smartkitchen.client;
 
-import com.proto.cooker.Cooker;
-import com.proto.cooker.CookerRequest;
-import com.proto.cooker.CookerResponse;
-import com.proto.cooker.CookerServiceGrpc;
+import com.proto.cooker.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
 public class SmartKitchenClient {
     public static void main(String[] args) {
-        System.out.println("Hello I am a smart kitchen client");
+        System.out.println("Smart Kitchen client running!");
 
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
                 .usePlaintext()
@@ -17,19 +14,35 @@ public class SmartKitchenClient {
         System.out.println("Creating Stub");
 
         CookerServiceGrpc.CookerServiceBlockingStub cookerClient = CookerServiceGrpc.newBlockingStub(channel);
+//        //UNARY
+//        Cooker cooker = Cooker.newBuilder()
+//                .setCookTime(20.00)
+//                .setTemperature(180)
+//                .setWeight(250.00)
+//                .build();
+//
+//        CookerRequest cookerRequest = CookerRequest.newBuilder()
+//                .setCooker(cooker)
+//                .build();
+//
+//        CookerResponse cookerResponse = cookerClient.cooker(cookerRequest);
+//
+//        System.out.println(cookerResponse.getResult());
 
-        Cooker cooker = Cooker.newBuilder()
-                .setCookTime(20.00)
-                .setTemperature(180)
-                .setWeight(250.00)
+
+        DonePercentRequest donePercentRequest = DonePercentRequest.newBuilder()
+                .setItem("Roast Chicken")
                 .build();
 
-        CookerRequest cookerRequest = CookerRequest.newBuilder()
-                .setCooker(cooker)
-                .build();
 
-        CookerResponse cookerResponse = cookerClient.cooker(cookerRequest);
+        //streaming responses of cook percentage
+        cookerClient.donePercent(donePercentRequest)
+                .forEachRemaining(DonePercentResponse -> {
+                    System.out.println(DonePercentResponse.getPercent());
+                });
 
-        System.out.println(cookerResponse.getResult());
+        System.out.println("Shutting down cooker...");
+        channel.shutdown();
+
     }
 }

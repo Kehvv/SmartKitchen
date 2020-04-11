@@ -29,6 +29,26 @@ public final class CookerOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cooker_CookerResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_DonePercentRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_DonePercentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_DonePercentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_DonePercentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_DistanceRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_DistanceRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_DistanceResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_DistanceResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -42,10 +62,17 @@ public final class CookerOuterClass {
       "\023\n\013temperature\030\001 \001(\005\022\020\n\010cookTime\030\002 \001(\001\022\016" +
       "\n\006weight\030\003 \001(\001\"/\n\rCookerRequest\022\036\n\006cooke" +
       "r\030\001 \001(\0132\016.cooker.Cooker\" \n\016CookerRespons" +
-      "e\022\016\n\006result\030\001 \001(\t2J\n\rCookerService\0229\n\006Co" +
-      "oker\022\025.cooker.CookerRequest\032\026.cooker.Coo" +
-      "kerResponse\"\000B\024\n\020com.proto.cookerP\001b\006pro" +
-      "to3"
+      "e\022\016\n\006result\030\001 \001(\t\"\"\n\022DonePercentRequest\022" +
+      "\014\n\004item\030\001 \001(\t\"&\n\023DonePercentResponse\022\017\n\007" +
+      "percent\030\001 \001(\t\"%\n\017DistanceRequest\022\022\n\nkilo" +
+      "metres\030\001 \001(\001\"$\n\020DistanceResponse\022\020\n\010resp" +
+      "onse\030\001 \001(\t2\331\001\n\rCookerService\0229\n\006Cooker\022\025" +
+      ".cooker.CookerRequest\032\026.cooker.CookerRes" +
+      "ponse\"\000\022J\n\013DonePercent\022\032.cooker.DonePerc" +
+      "entRequest\032\033.cooker.DonePercentResponse\"" +
+      "\0000\001\022A\n\010Distance\022\027.cooker.DistanceRequest" +
+      "\032\030.cooker.DistanceResponse\"\000(\001B\024\n\020com.pr" +
+      "oto.cookerP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -69,6 +96,30 @@ public final class CookerOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cooker_CookerResponse_descriptor,
         new java.lang.String[] { "Result", });
+    internal_static_cooker_DonePercentRequest_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_cooker_DonePercentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_DonePercentRequest_descriptor,
+        new java.lang.String[] { "Item", });
+    internal_static_cooker_DonePercentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_cooker_DonePercentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_DonePercentResponse_descriptor,
+        new java.lang.String[] { "Percent", });
+    internal_static_cooker_DistanceRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_cooker_DistanceRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_DistanceRequest_descriptor,
+        new java.lang.String[] { "Kilometres", });
+    internal_static_cooker_DistanceResponse_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_cooker_DistanceResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_DistanceResponse_descriptor,
+        new java.lang.String[] { "Response", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

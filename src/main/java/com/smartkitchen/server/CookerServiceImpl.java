@@ -1,9 +1,6 @@
 package com.smartkitchen.server;
 
-import com.proto.cooker.Cooker;
-import com.proto.cooker.CookerRequest;
-import com.proto.cooker.CookerResponse;
-import com.proto.cooker.CookerServiceGrpc;
+import com.proto.cooker.*;
 import io.grpc.stub.StreamObserver;
 
 public class CookerServiceImpl extends CookerServiceGrpc.CookerServiceImplBase {
@@ -12,15 +9,15 @@ public class CookerServiceImpl extends CookerServiceGrpc.CookerServiceImplBase {
 
         //extract information from client
 
-       Cooker cooker = request.getCooker();
+        Cooker cooker = request.getCooker();
         int temp = cooker.getTemperature();
         double time = cooker.getCookTime();
         double weight = cooker.getWeight();
-        double newTime = time * (1+(weight/ 100));
+        double newTime = time * (1 + (weight / 100));
 
         //create smart response
 
-        String result = "Setting Smart Cooker to " + temp + " Degrees for " + newTime +" minutes (Based on weight. Original time = " + time + " minutes)";
+        String result = "Setting Smart Cooker to " + temp + " Degrees for " + newTime + " minutes (Based on weight. Original time = " + time + " minutes)";
 
         //send response
 
@@ -29,10 +26,28 @@ public class CookerServiceImpl extends CookerServiceGrpc.CookerServiceImplBase {
                 .build();
 
 
-
         responseObserver.onNext(response);
 
         responseObserver.onCompleted();
 
+    }
+
+    @Override
+    public void donePercent(DonePercentRequest request, StreamObserver<DonePercentResponse> responseObserver) {
+        String item = request.getItem();
+        try {
+            for (int i = 0; i <= 100; i++) {
+                String percent = "Food item " + item + " is " + i + " percent cooked.";
+                DonePercentResponse response = DonePercentResponse.newBuilder()
+                        .setPercent(percent)
+                        .build();
+
+                responseObserver.onNext(response);
+                Thread.sleep(300L);
+            }
+
+        }catch (InterruptedException e) {
+            responseObserver.onCompleted();
+        }
     }
 }
