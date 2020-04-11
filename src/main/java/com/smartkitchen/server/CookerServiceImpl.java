@@ -50,4 +50,48 @@ public class CookerServiceImpl extends CookerServiceGrpc.CookerServiceImplBase {
             responseObserver.onCompleted();
         }
     }
+
+    @Override
+    public StreamObserver<DistanceRequest> distance(StreamObserver<DistanceResponse> responseObserver) {
+        StreamObserver<DistanceRequest> requestObserver = new StreamObserver<DistanceRequest>() {
+
+            String response = "";
+            double kM = 0.0;
+
+            @Override
+            public void onNext(DistanceRequest value) {
+                //this method handles client sending a message
+                kM = value.getKilometres();
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                //this method handles client sending an *ERROR*
+            }
+
+            @Override
+            public void onCompleted() {
+                //this method handles when the client is finished and want to return a response
+
+                if ( (kM < 2.0) && (kM > 0) )  {
+
+                    response = "Owner is within " + kM + " Kilometres. Preheating Oven.";
+
+
+                } else {
+                    response = "Owner is within " + kM + " Kilometres. Out of Range.";
+                }
+
+                responseObserver.onNext(
+                        new DistanceResponse().newBuilder()
+                                .setResponse(response)
+                                .build()
+                );
+                responseObserver.onCompleted();
+            }
+        };
+
+        return requestObserver;
+    }
 }

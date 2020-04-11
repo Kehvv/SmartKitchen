@@ -15,7 +15,7 @@ private static final long serialVersionUID = 0L;
   private DistanceResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private DistanceResponse() {
+  public DistanceResponse() {
     response_ = "";
   }
 
