@@ -21,6 +21,16 @@ message CreateSmartListResponse{
     Smartlist smartlist = 1;
 }
 
+message ReadSmartListRequest{
+    string item_id = 1;
+}
+
+message ReadSmartListResponse{
+    Smartlist smartlist = 1;
+}
+
 service SmartListService{
     rpc CreateSmartList(CreateSmartListRequest) returns (CreateSmartListResponse){};
+    rpc ReadSmartList(ReadSmartListRequest) returns (ReadSmartListResponse) {};
+
 }

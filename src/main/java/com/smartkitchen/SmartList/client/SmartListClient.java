@@ -1,9 +1,6 @@
 package com.smartkitchen.SmartList.client;
 
-import com.proto.smartlist.CreateSmartListRequest;
-import com.proto.smartlist.CreateSmartListResponse;
-import com.proto.smartlist.SmartListServiceGrpc;
-import com.proto.smartlist.Smartlist;
+import com.proto.smartlist.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
@@ -36,5 +33,23 @@ public class SmartListClient {
 
         System.out.println("Received Create Smart List Item Response:");
         System.out.println(createResponse.toString());
+
+        String smartlistId = createResponse.getSmartlist().getId();
+
+        System.out.println("Item Found: Reading Smart Item...");
+
+         ReadSmartListResponse readSmartListResponse = smartlistClient.readSmartList(ReadSmartListRequest.newBuilder()
+                .setItemId(smartlistId)
+                .build());
+
+         System.out.println(readSmartListResponse.toString());
+
+//         ERROR HANDLING - Trigger notfound errror
+
+//        System.out.println("Attempting to read id which does not exist:");
+//        ReadSmartListResponse readSmartListResponseNotFound = smartlistClient.readSmartList(ReadSmartListRequest.newBuilder()
+//                .setItemId("5e936b9f53f24235dc75e2e6")
+//                .build());
+
     }
 }
