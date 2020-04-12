@@ -12,6 +12,7 @@ public class SmartKitchenServer {
         System.out.println("Starting Smart Kitchen Server :)");
         Server server = ServerBuilder.forPort(50051)
                 .addService(new CookerServiceImpl())
+                .addService(new SmartListServiceImpl())
                 .build();
 
         server.start();

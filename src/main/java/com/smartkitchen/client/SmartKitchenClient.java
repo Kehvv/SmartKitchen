@@ -25,7 +25,8 @@ public class SmartKitchenClient {
 //        cookerCall(channel);
 //       donePercentCall(channel);
 //       distanceCall(channel);
-        steakTimeCall(channel);
+ //       steakTimeCall(channel);
+        smartListCall(channel);
 
 
         System.out.println("Shutting down cooker...");
@@ -149,4 +150,6 @@ public class SmartKitchenClient {
         }
 
     }
+
+
 }
