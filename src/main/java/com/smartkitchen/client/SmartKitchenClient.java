@@ -5,6 +5,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +23,10 @@ public class SmartKitchenClient {
                 .build();
 
 //        cookerCall(channel);
-//        donePercentCall(channel);
-        distanceCall(channel);
+//       donePercentCall(channel);
+//       distanceCall(channel);
+        steakTimeCall(channel);
+
 
         System.out.println("Shutting down cooker...");
         channel.shutdown();
@@ -107,6 +110,43 @@ public class SmartKitchenClient {
             e.printStackTrace();
         }
 
+
+    }
+
+    private void steakTimeCall(ManagedChannel channel){
+        CookerServiceGrpc.CookerServiceStub asyncClient = CookerServiceGrpc.newStub(channel);
+        CountDownLatch latch = new CountDownLatch(1);
+
+        StreamObserver<SteakTimeRequest> requestObserver = asyncClient.steakTime(new StreamObserver<SteakTimeResponse>() {
+            @Override
+            public void onNext(SteakTimeResponse value) {
+                System.out.println("Response from server: " +value.getResponse());
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                latch.countDown();
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("Server is done sending data");
+                latch.countDown();
+            }
+        });
+
+        Arrays.asList("rare", "medium", "rare", "well done").forEach(
+               doneness -> requestObserver.onNext(SteakTimeRequest.newBuilder()
+                .setDoneness(doneness)
+                .build())
+        );
+
+        requestObserver.onCompleted();
+        try {
+            latch.await(3, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }

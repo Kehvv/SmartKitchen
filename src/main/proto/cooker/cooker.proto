@@ -35,14 +35,28 @@ message DistanceResponse{
     string response = 1;
 }
 
+message SteakTimeRequest {
+    string doneness = 1;
+}
+
+message SteakTimeResponse {
+    string response = 1;
+}
+
 service CookerService {
 
-    //Unary request - send required cooking info and server responds with expected time it will take to cook
+    //Unary request - send required cooking info and server
+    //responds with expected time it will take to cook
     rpc Cooker(CookerRequest) returns (CookerResponse) {};
 
-    //Server Streaming Request - client requests server to provide constant updates on food being cooked and server provides stream of percentage
+    //Server Streaming Request - client requests server to provide constant
+    //updates on food being cooked and server provides stream of percentage
     rpc DonePercent(DonePercentRequest) returns (stream DonePercentResponse) {};
 
-    //Client provides updates on distance it is from home. Once within a certain distance the cooker will begin preheating.
+    //Client provides updates on distance it is from home.
+    //Once within a certain distance the cooker will begin preheating.
     rpc Distance(stream DistanceRequest) returns (DistanceResponse) {};
+
+    rpc SteakTime(stream SteakTimeRequest) returns (stream SteakTimeResponse){};
+
 }

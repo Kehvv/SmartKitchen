@@ -49,6 +49,16 @@ public final class CookerOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cooker_DistanceResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_SteakTimeRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_SteakTimeRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cooker_SteakTimeResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cooker_SteakTimeResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -66,13 +76,17 @@ public final class CookerOuterClass {
       "\014\n\004item\030\001 \001(\t\"&\n\023DonePercentResponse\022\017\n\007" +
       "percent\030\001 \001(\t\"%\n\017DistanceRequest\022\022\n\nkilo" +
       "metres\030\001 \001(\001\"$\n\020DistanceResponse\022\020\n\010resp" +
-      "onse\030\001 \001(\t2\331\001\n\rCookerService\0229\n\006Cooker\022\025" +
-      ".cooker.CookerRequest\032\026.cooker.CookerRes" +
-      "ponse\"\000\022J\n\013DonePercent\022\032.cooker.DonePerc" +
-      "entRequest\032\033.cooker.DonePercentResponse\"" +
-      "\0000\001\022A\n\010Distance\022\027.cooker.DistanceRequest" +
-      "\032\030.cooker.DistanceResponse\"\000(\001B\024\n\020com.pr" +
-      "oto.cookerP\001b\006proto3"
+      "onse\030\001 \001(\t\"$\n\020SteakTimeRequest\022\020\n\010donene" +
+      "ss\030\001 \001(\t\"%\n\021SteakTimeResponse\022\020\n\010respons" +
+      "e\030\001 \001(\t2\241\002\n\rCookerService\0229\n\006Cooker\022\025.co" +
+      "oker.CookerRequest\032\026.cooker.CookerRespon" +
+      "se\"\000\022J\n\013DonePercent\022\032.cooker.DonePercent" +
+      "Request\032\033.cooker.DonePercentResponse\"\0000\001" +
+      "\022A\n\010Distance\022\027.cooker.DistanceRequest\032\030." +
+      "cooker.DistanceResponse\"\000(\001\022F\n\tSteakTime" +
+      "\022\030.cooker.SteakTimeRequest\032\031.cooker.Stea" +
+      "kTimeResponse\"\000(\0010\001B\024\n\020com.proto.cookerP" +
+      "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -119,6 +133,18 @@ public final class CookerOuterClass {
     internal_static_cooker_DistanceResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cooker_DistanceResponse_descriptor,
+        new java.lang.String[] { "Response", });
+    internal_static_cooker_SteakTimeRequest_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_cooker_SteakTimeRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_SteakTimeRequest_descriptor,
+        new java.lang.String[] { "Doneness", });
+    internal_static_cooker_SteakTimeResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_cooker_SteakTimeResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cooker_SteakTimeResponse_descriptor,
         new java.lang.String[] { "Response", });
   }
 

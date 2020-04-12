@@ -120,6 +120,37 @@ public final class CookerServiceGrpc {
     return getDistanceMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.cooker.SteakTimeRequest,
+      com.proto.cooker.SteakTimeResponse> getSteakTimeMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SteakTime",
+      requestType = com.proto.cooker.SteakTimeRequest.class,
+      responseType = com.proto.cooker.SteakTimeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.proto.cooker.SteakTimeRequest,
+      com.proto.cooker.SteakTimeResponse> getSteakTimeMethod() {
+    io.grpc.MethodDescriptor<com.proto.cooker.SteakTimeRequest, com.proto.cooker.SteakTimeResponse> getSteakTimeMethod;
+    if ((getSteakTimeMethod = CookerServiceGrpc.getSteakTimeMethod) == null) {
+      synchronized (CookerServiceGrpc.class) {
+        if ((getSteakTimeMethod = CookerServiceGrpc.getSteakTimeMethod) == null) {
+          CookerServiceGrpc.getSteakTimeMethod = getSteakTimeMethod =
+              io.grpc.MethodDescriptor.<com.proto.cooker.SteakTimeRequest, com.proto.cooker.SteakTimeResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SteakTime"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.cooker.SteakTimeRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.cooker.SteakTimeResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CookerServiceMethodDescriptorSupplier("SteakTime"))
+              .build();
+        }
+      }
+    }
+    return getSteakTimeMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -170,7 +201,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Unary request - send required cooking info and server responds with expected time it will take to cook
+     *Unary request - send required cooking info and server
+     *responds with expected time it will take to cook
      * </pre>
      */
     public void cooker(com.proto.cooker.CookerRequest request,
@@ -180,7 +212,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Server Streaming Request - client requests server to provide constant updates on food being cooked and server provides stream of percentage
+     *Server Streaming Request - client requests server to provide constant
+     *updates on food being cooked and server provides stream of percentage
      * </pre>
      */
     public void donePercent(com.proto.cooker.DonePercentRequest request,
@@ -190,12 +223,20 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Client provides updates on distance it is from home. Once within a certain distance the cooker will begin preheating.
+     *Client provides updates on distance it is from home.
+     *Once within a certain distance the cooker will begin preheating.
      * </pre>
      */
     public io.grpc.stub.StreamObserver<com.proto.cooker.DistanceRequest> distance(
         io.grpc.stub.StreamObserver<com.proto.cooker.DistanceResponse> responseObserver) {
       return asyncUnimplementedStreamingCall(getDistanceMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.proto.cooker.SteakTimeRequest> steakTime(
+        io.grpc.stub.StreamObserver<com.proto.cooker.SteakTimeResponse> responseObserver) {
+      return asyncUnimplementedStreamingCall(getSteakTimeMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -221,6 +262,13 @@ public final class CookerServiceGrpc {
                 com.proto.cooker.DistanceRequest,
                 com.proto.cooker.DistanceResponse>(
                   this, METHODID_DISTANCE)))
+          .addMethod(
+            getSteakTimeMethod(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.proto.cooker.SteakTimeRequest,
+                com.proto.cooker.SteakTimeResponse>(
+                  this, METHODID_STEAK_TIME)))
           .build();
     }
   }
@@ -241,7 +289,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Unary request - send required cooking info and server responds with expected time it will take to cook
+     *Unary request - send required cooking info and server
+     *responds with expected time it will take to cook
      * </pre>
      */
     public void cooker(com.proto.cooker.CookerRequest request,
@@ -252,7 +301,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Server Streaming Request - client requests server to provide constant updates on food being cooked and server provides stream of percentage
+     *Server Streaming Request - client requests server to provide constant
+     *updates on food being cooked and server provides stream of percentage
      * </pre>
      */
     public void donePercent(com.proto.cooker.DonePercentRequest request,
@@ -263,13 +313,22 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Client provides updates on distance it is from home. Once within a certain distance the cooker will begin preheating.
+     *Client provides updates on distance it is from home.
+     *Once within a certain distance the cooker will begin preheating.
      * </pre>
      */
     public io.grpc.stub.StreamObserver<com.proto.cooker.DistanceRequest> distance(
         io.grpc.stub.StreamObserver<com.proto.cooker.DistanceResponse> responseObserver) {
       return asyncClientStreamingCall(
           getChannel().newCall(getDistanceMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.proto.cooker.SteakTimeRequest> steakTime(
+        io.grpc.stub.StreamObserver<com.proto.cooker.SteakTimeResponse> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getSteakTimeMethod(), getCallOptions()), responseObserver);
     }
   }
 
@@ -289,7 +348,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Unary request - send required cooking info and server responds with expected time it will take to cook
+     *Unary request - send required cooking info and server
+     *responds with expected time it will take to cook
      * </pre>
      */
     public com.proto.cooker.CookerResponse cooker(com.proto.cooker.CookerRequest request) {
@@ -299,7 +359,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Server Streaming Request - client requests server to provide constant updates on food being cooked and server provides stream of percentage
+     *Server Streaming Request - client requests server to provide constant
+     *updates on food being cooked and server provides stream of percentage
      * </pre>
      */
     public java.util.Iterator<com.proto.cooker.DonePercentResponse> donePercent(
@@ -325,7 +386,8 @@ public final class CookerServiceGrpc {
 
     /**
      * <pre>
-     *Unary request - send required cooking info and server responds with expected time it will take to cook
+     *Unary request - send required cooking info and server
+     *responds with expected time it will take to cook
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.proto.cooker.CookerResponse> cooker(
@@ -338,6 +400,7 @@ public final class CookerServiceGrpc {
   private static final int METHODID_COOKER = 0;
   private static final int METHODID_DONE_PERCENT = 1;
   private static final int METHODID_DISTANCE = 2;
+  private static final int METHODID_STEAK_TIME = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -377,6 +440,9 @@ public final class CookerServiceGrpc {
         case METHODID_DISTANCE:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.distance(
               (io.grpc.stub.StreamObserver<com.proto.cooker.DistanceResponse>) responseObserver);
+        case METHODID_STEAK_TIME:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.steakTime(
+              (io.grpc.stub.StreamObserver<com.proto.cooker.SteakTimeResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -431,6 +497,7 @@ public final class CookerServiceGrpc {
               .addMethod(getCookerMethod())
               .addMethod(getDonePercentMethod())
               .addMethod(getDistanceMethod())
+              .addMethod(getSteakTimeMethod())
               .build();
         }
       }

@@ -94,4 +94,64 @@ public class CookerServiceImpl extends CookerServiceGrpc.CookerServiceImplBase {
 
         return requestObserver;
     }
+
+    @Override
+    public StreamObserver<SteakTimeRequest> steakTime(StreamObserver<SteakTimeResponse> responseObserver) {
+        return new StreamObserver<SteakTimeRequest>() {
+
+
+            @Override
+            public void onNext(SteakTimeRequest value) {
+                String doneness = value.getDoneness();
+
+                responseObserver.onNext(
+                        SteakTimeResponse.newBuilder()
+                                .setResponse("Cooking " + doneness + " steak!")
+                                .build()
+                );
+                int i;
+                if (doneness.equals("rare") ){
+                    i=5;
+                }else if (doneness.equals("medium") ){
+                    i =10;
+                }else{
+                    i=15;
+                }
+
+//                try {
+
+                    for (int k = i; k >= 0; k--) {
+                        if (k==0){
+                            responseObserver.onNext(
+                                    SteakTimeResponse.newBuilder()
+                                            .setResponse(doneness + " steak is cooked!!")
+                                            .build()
+                            );
+                        }else {
+                            responseObserver.onNext(
+                                    SteakTimeResponse.newBuilder()
+                                            .setResponse(doneness + " steak is " + k + " seconds until cooked...")
+                                            .build()
+                            );
+                        }
+//                        Thread.sleep(300L);
+                    }
+//                }catch (InterruptedException e) {
+//                responseObserver.onCompleted();
+//            }
+
+            }
+
+            @Override
+            public void onError(Throwable t) {
+                responseObserver.onCompleted();
+            }
+
+            @Override
+            public void onCompleted() {
+                responseObserver.onCompleted();
+
+                }
+        };
+    }
 }
