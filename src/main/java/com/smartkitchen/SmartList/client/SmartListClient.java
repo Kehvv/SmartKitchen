@@ -51,5 +51,18 @@ public class SmartListClient {
 //                .setItemId("5e936b9f53f24235dc75e2e6")
 //                .build());
 
+        Smartlist newSmartlist = Smartlist.newBuilder()
+                .setId(smartlistId)
+                .setItem("CHANGED ITEM")
+                .setBarcode(1001)
+                .setPrice(1.55)
+                .build();
+        System.out.println("Updating item...");
+        UpdateSmartListResponse updateSmartListResponse= smartlistClient.updateSmartList(UpdateSmartListRequest.newBuilder()
+                .setSmartlist(newSmartlist)
+                .build());
+
+        System.out.println("Item Updated!");
+        System.out.println(updateSmartListResponse.toString());
     }
 }

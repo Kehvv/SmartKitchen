@@ -39,6 +39,16 @@ public final class SmartlistOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_smartlist_ReadSmartListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartlist_UpdateSmartListRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartlist_UpdateSmartListRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartlist_UpdateSmartListResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartlist_UpdateSmartListResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -56,13 +66,19 @@ public final class SmartlistOuterClass {
       "nse\022\'\n\tsmartlist\030\001 \001(\0132\024.smartlist.Smart" +
       "list\"\'\n\024ReadSmartListRequest\022\017\n\007item_id\030" +
       "\001 \001(\t\"@\n\025ReadSmartListResponse\022\'\n\tsmartl" +
-      "ist\030\001 \001(\0132\024.smartlist.Smartlist2\304\001\n\020Smar" +
-      "tListService\022Z\n\017CreateSmartList\022!.smartl" +
-      "ist.CreateSmartListRequest\032\".smartlist.C" +
-      "reateSmartListResponse\"\000\022T\n\rReadSmartLis" +
-      "t\022\037.smartlist.ReadSmartListRequest\032 .sma" +
-      "rtlist.ReadSmartListResponse\"\000B\027\n\023com.pr" +
-      "oto.smartlistP\001b\006proto3"
+      "ist\030\001 \001(\0132\024.smartlist.Smartlist\"A\n\026Updat" +
+      "eSmartListRequest\022\'\n\tsmartlist\030\001 \001(\0132\024.s" +
+      "martlist.Smartlist\"B\n\027UpdateSmartListRes" +
+      "ponse\022\'\n\tsmartlist\030\001 \001(\0132\024.smartlist.Sma" +
+      "rtlist2\240\002\n\020SmartListService\022Z\n\017CreateSma" +
+      "rtList\022!.smartlist.CreateSmartListReques" +
+      "t\032\".smartlist.CreateSmartListResponse\"\000\022" +
+      "T\n\rReadSmartList\022\037.smartlist.ReadSmartLi" +
+      "stRequest\032 .smartlist.ReadSmartListRespo" +
+      "nse\"\000\022Z\n\017UpdateSmartList\022!.smartlist.Upd" +
+      "ateSmartListRequest\032\".smartlist.UpdateSm" +
+      "artListResponse\"\000B\027\n\023com.proto.smartlist" +
+      "P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -97,6 +113,18 @@ public final class SmartlistOuterClass {
     internal_static_smartlist_ReadSmartListResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartlist_ReadSmartListResponse_descriptor,
+        new java.lang.String[] { "Smartlist", });
+    internal_static_smartlist_UpdateSmartListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_smartlist_UpdateSmartListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartlist_UpdateSmartListRequest_descriptor,
+        new java.lang.String[] { "Smartlist", });
+    internal_static_smartlist_UpdateSmartListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_smartlist_UpdateSmartListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartlist_UpdateSmartListResponse_descriptor,
         new java.lang.String[] { "Smartlist", });
   }
 

@@ -29,8 +29,17 @@ message ReadSmartListResponse{
     Smartlist smartlist = 1;
 }
 
+message UpdateSmartListRequest{
+    Smartlist smartlist = 1;
+}
+
+message UpdateSmartListResponse{
+    Smartlist smartlist = 1;
+}
+
 service SmartListService{
     rpc CreateSmartList(CreateSmartListRequest) returns (CreateSmartListResponse){};
     rpc ReadSmartList(ReadSmartListRequest) returns (ReadSmartListResponse) {};
+    rpc UpdateSmartList(UpdateSmartListRequest) returns(UpdateSmartListResponse) {};
 
 }

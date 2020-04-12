@@ -89,6 +89,37 @@ public final class SmartListServiceGrpc {
     return getReadSmartListMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.smartlist.UpdateSmartListRequest,
+      com.proto.smartlist.UpdateSmartListResponse> getUpdateSmartListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateSmartList",
+      requestType = com.proto.smartlist.UpdateSmartListRequest.class,
+      responseType = com.proto.smartlist.UpdateSmartListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.proto.smartlist.UpdateSmartListRequest,
+      com.proto.smartlist.UpdateSmartListResponse> getUpdateSmartListMethod() {
+    io.grpc.MethodDescriptor<com.proto.smartlist.UpdateSmartListRequest, com.proto.smartlist.UpdateSmartListResponse> getUpdateSmartListMethod;
+    if ((getUpdateSmartListMethod = SmartListServiceGrpc.getUpdateSmartListMethod) == null) {
+      synchronized (SmartListServiceGrpc.class) {
+        if ((getUpdateSmartListMethod = SmartListServiceGrpc.getUpdateSmartListMethod) == null) {
+          SmartListServiceGrpc.getUpdateSmartListMethod = getUpdateSmartListMethod =
+              io.grpc.MethodDescriptor.<com.proto.smartlist.UpdateSmartListRequest, com.proto.smartlist.UpdateSmartListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateSmartList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.smartlist.UpdateSmartListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.smartlist.UpdateSmartListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new SmartListServiceMethodDescriptorSupplier("UpdateSmartList"))
+              .build();
+        }
+      }
+    }
+    return getUpdateSmartListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -151,6 +182,13 @@ public final class SmartListServiceGrpc {
       asyncUnimplementedUnaryCall(getReadSmartListMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void updateSmartList(com.proto.smartlist.UpdateSmartListRequest request,
+        io.grpc.stub.StreamObserver<com.proto.smartlist.UpdateSmartListResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getUpdateSmartListMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -167,6 +205,13 @@ public final class SmartListServiceGrpc {
                 com.proto.smartlist.ReadSmartListRequest,
                 com.proto.smartlist.ReadSmartListResponse>(
                   this, METHODID_READ_SMART_LIST)))
+          .addMethod(
+            getUpdateSmartListMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.proto.smartlist.UpdateSmartListRequest,
+                com.proto.smartlist.UpdateSmartListResponse>(
+                  this, METHODID_UPDATE_SMART_LIST)))
           .build();
     }
   }
@@ -200,6 +245,14 @@ public final class SmartListServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getReadSmartListMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void updateSmartList(com.proto.smartlist.UpdateSmartListRequest request,
+        io.grpc.stub.StreamObserver<com.proto.smartlist.UpdateSmartListResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getUpdateSmartListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -228,6 +281,13 @@ public final class SmartListServiceGrpc {
     public com.proto.smartlist.ReadSmartListResponse readSmartList(com.proto.smartlist.ReadSmartListRequest request) {
       return blockingUnaryCall(
           getChannel(), getReadSmartListMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.proto.smartlist.UpdateSmartListResponse updateSmartList(com.proto.smartlist.UpdateSmartListRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getUpdateSmartListMethod(), getCallOptions(), request);
     }
   }
 
@@ -260,10 +320,19 @@ public final class SmartListServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getReadSmartListMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.proto.smartlist.UpdateSmartListResponse> updateSmartList(
+        com.proto.smartlist.UpdateSmartListRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getUpdateSmartListMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_SMART_LIST = 0;
   private static final int METHODID_READ_SMART_LIST = 1;
+  private static final int METHODID_UPDATE_SMART_LIST = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -289,6 +358,10 @@ public final class SmartListServiceGrpc {
         case METHODID_READ_SMART_LIST:
           serviceImpl.readSmartList((com.proto.smartlist.ReadSmartListRequest) request,
               (io.grpc.stub.StreamObserver<com.proto.smartlist.ReadSmartListResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_SMART_LIST:
+          serviceImpl.updateSmartList((com.proto.smartlist.UpdateSmartListRequest) request,
+              (io.grpc.stub.StreamObserver<com.proto.smartlist.UpdateSmartListResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -353,6 +426,7 @@ public final class SmartListServiceGrpc {
               .setSchemaDescriptor(new SmartListServiceFileDescriptorSupplier())
               .addMethod(getCreateSmartListMethod())
               .addMethod(getReadSmartListMethod())
+              .addMethod(getUpdateSmartListMethod())
               .build();
         }
       }
