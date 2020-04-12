@@ -1,4 +1,4 @@
-package com.smartkitchen.server;
+package com.smartkitchen.Cooker.server;
 
 import com.proto.cooker.*;
 import io.grpc.stub.StreamObserver;

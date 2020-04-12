@@ -1,4 +1,4 @@
-package com.smartkitchen.server;
+package com.smartkitchen.Cooker.server;
 
 
 import io.grpc.Server;
@@ -9,7 +9,7 @@ import java.io.IOException;
 public class CookerServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("Starting Smart Kitchen Server :)");
+        System.out.println("Starting Smart Kitchen Cooker Server :)");
         Server server = ServerBuilder.forPort(50051)
                 .addService(new CookerServiceImpl())
                 .build();
@@ -19,7 +19,7 @@ public class CookerServer {
         Runtime.getRuntime().addShutdownHook(new Thread( () -> {
             System.out.println("Shutting down...");
             server.shutdown();
-            System.out.println("Successfully stopped smartKitchen :)");
+            System.out.println("Successfully stopped smartKitchen Cooker :)");
         } ));
 
         server.awaitTermination();

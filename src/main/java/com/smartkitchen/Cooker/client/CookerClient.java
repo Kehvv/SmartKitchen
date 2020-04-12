@@ -1,4 +1,4 @@
-package com.smartkitchen.client;
+package com.smartkitchen.Cooker.client;
 
 import com.proto.cooker.*;
 import io.grpc.ManagedChannel;
@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CookerClient {
 
     public static void main(String[] args) {
-        System.out.println("Smart Kitchen client running!");
+        System.out.println("Smart Kitchen cooker client running!");
         CookerClient main = new CookerClient();
         main.run();
     }
