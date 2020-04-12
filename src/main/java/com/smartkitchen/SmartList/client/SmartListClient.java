@@ -64,5 +64,19 @@ public class SmartListClient {
 
         System.out.println("Item Updated!");
         System.out.println(updateSmartListResponse.toString());
+
+        System.out.println("Deleting Smart Item");
+        DeleteSmartListResponse deleteSmartListResponse = smartlistClient.deleteSmartList(
+                DeleteSmartListRequest.newBuilder()
+                        .setSmartlistId(smartlistId)
+                        .build()
+        );
+        System.out.println("Smart Item Deleted!");
+
+        System.out.println("Reading Smart Item...");
+        //Should return notfound!
+        ReadSmartListResponse readSmartListResponseAfterDelete = smartlistClient.readSmartList(ReadSmartListRequest.newBuilder()
+                .setItemId(smartlistId)
+                .build());
     }
 }

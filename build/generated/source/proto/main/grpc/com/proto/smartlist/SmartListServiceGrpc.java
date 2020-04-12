@@ -120,6 +120,37 @@ public final class SmartListServiceGrpc {
     return getUpdateSmartListMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.proto.smartlist.DeleteSmartListRequest,
+      com.proto.smartlist.DeleteSmartListResponse> getDeleteSmartListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteSmartList",
+      requestType = com.proto.smartlist.DeleteSmartListRequest.class,
+      responseType = com.proto.smartlist.DeleteSmartListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.proto.smartlist.DeleteSmartListRequest,
+      com.proto.smartlist.DeleteSmartListResponse> getDeleteSmartListMethod() {
+    io.grpc.MethodDescriptor<com.proto.smartlist.DeleteSmartListRequest, com.proto.smartlist.DeleteSmartListResponse> getDeleteSmartListMethod;
+    if ((getDeleteSmartListMethod = SmartListServiceGrpc.getDeleteSmartListMethod) == null) {
+      synchronized (SmartListServiceGrpc.class) {
+        if ((getDeleteSmartListMethod = SmartListServiceGrpc.getDeleteSmartListMethod) == null) {
+          SmartListServiceGrpc.getDeleteSmartListMethod = getDeleteSmartListMethod =
+              io.grpc.MethodDescriptor.<com.proto.smartlist.DeleteSmartListRequest, com.proto.smartlist.DeleteSmartListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteSmartList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.smartlist.DeleteSmartListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.proto.smartlist.DeleteSmartListResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new SmartListServiceMethodDescriptorSupplier("DeleteSmartList"))
+              .build();
+        }
+      }
+    }
+    return getDeleteSmartListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -189,6 +220,13 @@ public final class SmartListServiceGrpc {
       asyncUnimplementedUnaryCall(getUpdateSmartListMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void deleteSmartList(com.proto.smartlist.DeleteSmartListRequest request,
+        io.grpc.stub.StreamObserver<com.proto.smartlist.DeleteSmartListResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDeleteSmartListMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -212,6 +250,13 @@ public final class SmartListServiceGrpc {
                 com.proto.smartlist.UpdateSmartListRequest,
                 com.proto.smartlist.UpdateSmartListResponse>(
                   this, METHODID_UPDATE_SMART_LIST)))
+          .addMethod(
+            getDeleteSmartListMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.proto.smartlist.DeleteSmartListRequest,
+                com.proto.smartlist.DeleteSmartListResponse>(
+                  this, METHODID_DELETE_SMART_LIST)))
           .build();
     }
   }
@@ -253,6 +298,14 @@ public final class SmartListServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getUpdateSmartListMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void deleteSmartList(com.proto.smartlist.DeleteSmartListRequest request,
+        io.grpc.stub.StreamObserver<com.proto.smartlist.DeleteSmartListResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getDeleteSmartListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -288,6 +341,13 @@ public final class SmartListServiceGrpc {
     public com.proto.smartlist.UpdateSmartListResponse updateSmartList(com.proto.smartlist.UpdateSmartListRequest request) {
       return blockingUnaryCall(
           getChannel(), getUpdateSmartListMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.proto.smartlist.DeleteSmartListResponse deleteSmartList(com.proto.smartlist.DeleteSmartListRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getDeleteSmartListMethod(), getCallOptions(), request);
     }
   }
 
@@ -328,11 +388,20 @@ public final class SmartListServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getUpdateSmartListMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.proto.smartlist.DeleteSmartListResponse> deleteSmartList(
+        com.proto.smartlist.DeleteSmartListRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getDeleteSmartListMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_SMART_LIST = 0;
   private static final int METHODID_READ_SMART_LIST = 1;
   private static final int METHODID_UPDATE_SMART_LIST = 2;
+  private static final int METHODID_DELETE_SMART_LIST = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -362,6 +431,10 @@ public final class SmartListServiceGrpc {
         case METHODID_UPDATE_SMART_LIST:
           serviceImpl.updateSmartList((com.proto.smartlist.UpdateSmartListRequest) request,
               (io.grpc.stub.StreamObserver<com.proto.smartlist.UpdateSmartListResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_SMART_LIST:
+          serviceImpl.deleteSmartList((com.proto.smartlist.DeleteSmartListRequest) request,
+              (io.grpc.stub.StreamObserver<com.proto.smartlist.DeleteSmartListResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -427,6 +500,7 @@ public final class SmartListServiceGrpc {
               .addMethod(getCreateSmartListMethod())
               .addMethod(getReadSmartListMethod())
               .addMethod(getUpdateSmartListMethod())
+              .addMethod(getDeleteSmartListMethod())
               .build();
         }
       }

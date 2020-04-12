@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package scanner;
+
+option java_package = "com.proto.scanner";
+option java_multiple_files = true;
+
+message Scan {
+    int32 barcode = 1;
+    string item = 2;
+}
+
+
+message ScannerRequest{
+    Scan scan =1;
+}
+
+message ScannerResponse{
+    string result =1;
+}
+
+service ScannerService {
+    rpc Scan(ScannerRequest) returns (ScannerResponse) {};
+}

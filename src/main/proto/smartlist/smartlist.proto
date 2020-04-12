@@ -37,9 +37,18 @@ message UpdateSmartListResponse{
     Smartlist smartlist = 1;
 }
 
+message DeleteSmartListRequest{
+    string smartlist_id = 1;
+}
+
+message DeleteSmartListResponse{
+    string smartlist_id = 1;
+}
+
 service SmartListService{
     rpc CreateSmartList(CreateSmartListRequest) returns (CreateSmartListResponse){};
     rpc ReadSmartList(ReadSmartListRequest) returns (ReadSmartListResponse) {};
     rpc UpdateSmartList(UpdateSmartListRequest) returns(UpdateSmartListResponse) {};
+    rpc DeleteSmartList(DeleteSmartListRequest) returns(DeleteSmartListResponse) {};
 
 }

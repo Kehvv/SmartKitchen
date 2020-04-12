@@ -4,6 +4,7 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 import com.proto.smartlist.*;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
@@ -153,5 +154,39 @@ public class SmartListServiceImpl extends SmartListServiceGrpc.SmartListServiceI
                 .setBarcode(document.getInteger("barcode"))
                 .build();
 
+    }
+
+    @Override
+    public void deleteSmartList(DeleteSmartListRequest request, StreamObserver<DeleteSmartListResponse> responseObserver) {
+        System.out.println("Smart Item Delete request received");
+        String smartlistId = request.getSmartlistId();
+        DeleteResult result = null;
+        try {
+            result = collection.deleteOne(eq("_id", new ObjectId(smartlistId)));
+        }catch (Exception e){
+            System.out.println("Smart Item not found!");
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("No Smart List item with this ID was found!")
+                            .augmentDescription(e.getLocalizedMessage())
+                            .asRuntimeException()
+            );
+
+
+
+        }
+        if (result.getDeletedCount() == 0){
+            System.out.println("Smart Item not found!");
+            responseObserver.onError(
+                    Status.NOT_FOUND
+                            .withDescription("No Smart List item with this ID was found!")
+                            .asRuntimeException());
+        }else{
+            System.out.println("Smart Item deleted successfully!");
+            responseObserver.onNext(DeleteSmartListResponse.newBuilder()
+                    .setSmartlistId(smartlistId)
+                    .build());
+            responseObserver.onCompleted();
+        }
     }
 }

@@ -49,6 +49,16 @@ public final class SmartlistOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_smartlist_UpdateSmartListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartlist_DeleteSmartListRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartlist_DeleteSmartListRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smartlist_DeleteSmartListResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_smartlist_DeleteSmartListResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -70,15 +80,19 @@ public final class SmartlistOuterClass {
       "eSmartListRequest\022\'\n\tsmartlist\030\001 \001(\0132\024.s" +
       "martlist.Smartlist\"B\n\027UpdateSmartListRes" +
       "ponse\022\'\n\tsmartlist\030\001 \001(\0132\024.smartlist.Sma" +
-      "rtlist2\240\002\n\020SmartListService\022Z\n\017CreateSma" +
-      "rtList\022!.smartlist.CreateSmartListReques" +
-      "t\032\".smartlist.CreateSmartListResponse\"\000\022" +
-      "T\n\rReadSmartList\022\037.smartlist.ReadSmartLi" +
-      "stRequest\032 .smartlist.ReadSmartListRespo" +
-      "nse\"\000\022Z\n\017UpdateSmartList\022!.smartlist.Upd" +
-      "ateSmartListRequest\032\".smartlist.UpdateSm" +
-      "artListResponse\"\000B\027\n\023com.proto.smartlist" +
-      "P\001b\006proto3"
+      "rtlist\".\n\026DeleteSmartListRequest\022\024\n\014smar" +
+      "tlist_id\030\001 \001(\t\"/\n\027DeleteSmartListRespons" +
+      "e\022\024\n\014smartlist_id\030\001 \001(\t2\374\002\n\020SmartListSer" +
+      "vice\022Z\n\017CreateSmartList\022!.smartlist.Crea" +
+      "teSmartListRequest\032\".smartlist.CreateSma" +
+      "rtListResponse\"\000\022T\n\rReadSmartList\022\037.smar" +
+      "tlist.ReadSmartListRequest\032 .smartlist.R" +
+      "eadSmartListResponse\"\000\022Z\n\017UpdateSmartLis" +
+      "t\022!.smartlist.UpdateSmartListRequest\032\".s" +
+      "martlist.UpdateSmartListResponse\"\000\022Z\n\017De" +
+      "leteSmartList\022!.smartlist.DeleteSmartLis" +
+      "tRequest\032\".smartlist.DeleteSmartListResp" +
+      "onse\"\000B\027\n\023com.proto.smartlistP\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -126,6 +140,18 @@ public final class SmartlistOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_smartlist_UpdateSmartListResponse_descriptor,
         new java.lang.String[] { "Smartlist", });
+    internal_static_smartlist_DeleteSmartListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_smartlist_DeleteSmartListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartlist_DeleteSmartListRequest_descriptor,
+        new java.lang.String[] { "SmartlistId", });
+    internal_static_smartlist_DeleteSmartListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_smartlist_DeleteSmartListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_smartlist_DeleteSmartListResponse_descriptor,
+        new java.lang.String[] { "SmartlistId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
