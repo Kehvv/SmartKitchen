@@ -9,11 +9,11 @@ import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-public class SmartKitchenClient {
+public class CookerClient {
 
     public static void main(String[] args) {
         System.out.println("Smart Kitchen client running!");
-        SmartKitchenClient main = new SmartKitchenClient();
+        CookerClient main = new CookerClient();
         main.run();
     }
 

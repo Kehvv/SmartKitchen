@@ -6,7 +6,7 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-public class SmartKitchenServer {
+public class CookerServer {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.println("Starting Smart Kitchen Server :)");
